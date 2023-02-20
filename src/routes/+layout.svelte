@@ -1,10 +1,27 @@
-<script>
+<script lang="ts">
 	import Header from './Header.svelte';
 	import './styles.css';
+
+	import type { LayoutData } from './$types';
+	import { config } from '../config.client';
+
+	export let data: LayoutData;
 </script>
 
 <div class="app">
 	<Header />
+
+	<h4>Private</h4>
+	<ul>
+		<li>nodeEnvironment: {data.nodeEnvironment}</li>
+		<li>privateEnvKey: {data.privateEnvKey}</li>
+		<li>prodOnlyKey: {data.prodOnlyKey}</li>
+	</ul>
+
+	<h4>Public</h4>
+	<ul>
+		<li>publicEnvVar: {config.publicEnvVar}</li>
+	</ul>
 
 	<main>
 		<slot />
